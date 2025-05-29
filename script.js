@@ -103,7 +103,7 @@ const PortfolioManager = {
             {
                 id: 'life_1',
                 category: 'life',
-                image: SAMPLE_IMAGES.life,
+                image: 'imgs/生活写真/your-photo1.jpg',
                 title: '渭南写真集',
                 description: '记录生活中的美好瞬间'
             },
