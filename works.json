@@ -1,0 +1,11 @@
+{
+    "works": [
+        {
+            "id": "test_1",
+            "category": "life",
+            "image": "imgs/生活写真/test.jpg",
+            "title": "测试作品",
+            "description": "这是一个测试作品"
+        }
+    ]
+} 
