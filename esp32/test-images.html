@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>图片测试</h1>
+    
+    <h2>生活写真</h2>
+    <div class="image-grid">
+        <div class="image-item">
+            <h3>渭南_01.jpg</h3>
+            <img src="./imgs/生活写真/渭南_01.jpg" alt="渭南_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+        <div class="image-item">
+            <h3>渭南_02.jpg</h3>
+            <img src="./imgs/生活写真/渭南_02.jpg" alt="渭南_02.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+    </div>
+    
+    <h2>模特约拍</h2>
+    <div class="image-grid">
+        <div class="image-item">
+            <h3>约拍_01.jpg</h3>
+            <img src="./imgs/模特约拍/约拍_01.jpg" alt="约拍_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+        <div class="image-item">
+            <h3>模特_01.jpg</h3>
+            <img src="./imgs/模特约拍/模特_01.jpg" alt="模特_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+    </div>
+    
+    <h2>校园写真</h2>
+    <div class="image-grid">
+        <div class="image-item">
+            <h3>建大_01.jpg</h3>
+            <img src="./imgs/校园写真/建大_01.jpg" alt="建大_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+        <div class="image-item">
+            <h3>高中_01.jpg</h3>
+            <img src="./imgs/校园写真/高中_01.jpg" alt="高中_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+    </div>
+    
+    <h2>直接路径测试</h2>
+    <div class="image-grid">
+        <div class="image-item">
+            <h3>直接指定建大_01.jpg</h3>
+            <img src="imgs/校园写真/建大_01.jpg" alt="建大_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+        <div class="image-item">
+            <h3>使用完整路径</h3>
+            <img src="/imgs/校园写真/建大_01.jpg" alt="建大_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+    </div>
+    
+    <h2>使用编码路径</h2>
+    <div class="image-grid">
+        <div class="image-item">
+            <h3>URL编码路径</h3>
+            <img src="imgs/%E6%A0%A1%E5%9B%AD%E5%86%99%E7%9C%9F/建大_01.jpg" alt="建大_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+        <div class="image-item">
+            <h3>部分编码路径</h3>
+            <img src="imgs/%E6%A0%A1%E5%9B%AD%E5%86%99%E7%9C%9F/%E5%BB%BA%E5%A4%A7_01.jpg" alt="建大_01.jpg" onerror="this.onerror=null; this.after(createErrorMsg(this.src))">
+        </div>
+    </div>
+
+    <script>
+        function createErrorMsg(src) {
+            const div = document.createElement('div');
+            div.className = 'error';
+            div.textContent = `无法加载图片: ${src}`;
+            return div;
+        }
+    </script>
+</body>
+</html> 

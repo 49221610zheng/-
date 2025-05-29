@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林木摄影工作室</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portfolio-section {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        .portfolio-filters {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 20px;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #333;
+            color: #fff;
+        }
+
+        .portfolio-grid {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .about-section {
+            margin-top: 40px;
+            padding: 40px 0;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <h1>林木摄影工作室</h1>
+        </div>
+    </nav>
+
+    <!-- Hero部分 -->
+    <section class="hero" style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.9));">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>林木摄影工作室</h1>
+            <p>专注室内摄影，用光影记录美好时刻</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="cta-button">查看作品</a>
+                <a href="#about" class="cta-button outline">联系我</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 作品展示区 -->
+    <section class="portfolio-section">
+        <div class="container">
+            <!-- 筛选按钮 -->
+            <div class="portfolio-filters">
+                <!-- 这里会通过JavaScript动态添加筛选按钮 -->
+            </div>
+
+            <!-- 作品网格 -->
+            <div class="portfolio-grid">
+                <!-- 这里会通过JavaScript动态添加作品 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <!-- 这里会通过JavaScript动态添加关于我的内容 -->
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>林木摄影</h3>
+                <p>用镜头记录美好时光</p>
+            </div>
+            <div class="footer-social">
+                <a href="tel:17609238082"><i class="fas fa-phone"></i></a>
+                <a href="mailto:1938697678@qq.com"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 林木摄影工作室. All rights reserved.</p>
+                <a href="admin.html" class="admin-link" title="管理入口">管理入口</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 调试信息 -->
+    <div id="debug-info" style="display: none; position: fixed; bottom: 0; right: 0; background: rgba(0,0,0,0.8); color: white; padding: 10px; max-height: 200px; overflow-y: auto; z-index: 9999;">
+        <div id="debug-log"></div>
+    </div>
+
+    <style>
+        .admin-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        
+        .admin-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 添加快捷键提示 */
+        .shortcut-tip {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+
+    <!-- 添加快捷键提示 -->
+    <div class="shortcut-tip" id="shortcutTip">
+        按住 Alt + A 快速访问管理页面
+    </div>
+
+    <script>
+        // 添加调试功能
+        const debugLog = document.getElementById('debug-log');
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+
+        console.log = function() {
+            originalConsoleLog.apply(console, arguments);
+            const message = Array.from(arguments).join(' ');
+            debugLog.innerHTML += `<div style="color: #8f8;">${message}</div>`;
+        };
+
+        console.error = function() {
+            originalConsoleError.apply(console, arguments);
+            const message = Array.from(arguments).join(' ');
+            debugLog.innerHTML += `<div style="color: #f88;">${message}</div>`;
+        };
+
+        // 显示调试信息（按D键切换）
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'd') {
+                const debugInfo = document.getElementById('debug-info');
+                debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+
+        // 添加快捷键支持
+        document.addEventListener('keydown', function(e) {
+            // Alt + A 组合键
+            if (e.altKey && e.key.toLowerCase() === 'a') {
+                window.location.href = 'admin.html';
+            }
+            
+            // 按住 Alt 键显示提示
+            if (e.altKey) {
+                document.getElementById('shortcutTip').style.display = 'block';
+            }
+        });
+
+        document.addEventListener('keyup', function(e) {
+            // 松开 Alt 键隐藏提示
+            if (!e.altKey) {
+                document.getElementById('shortcutTip').style.display = 'none';
+            }
+        });
+
+        // 防爬虫脚本
+        (function(){
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', function(e) {
+                if (
+                    e.key === 'F12' ||
+                    (e.ctrlKey && (e.key.toLowerCase() === 's' || e.key.toLowerCase() === 'u' || e.key.toLowerCase() === 'c'))
+                ) {
+                    e.preventDefault();
+                    alert('操作已被禁止');
+                }
+            });
+        })();
+
+        // 展示内容转义函数
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"']/g, function(s) {
+                return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[s];
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 
